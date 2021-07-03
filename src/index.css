@@ -1,0 +1,24 @@
+@font-face {
+  font-family: Montserrat, sans-serif;
+  src: local("Montserrat"),
+    url("./fonts/Montserrat/Montserrat-Medium.ttf") format(truetype);
+  font-weight: normal;
+}
+
+html {
+  background: linear-gradient(0.25turn, #030303, #262521);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
