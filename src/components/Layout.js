@@ -1,21 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import fs from 'fs'
+import ReactMarkdown from 'react-markdown'
+import { useParams } from 'react-router'
+import axios from 'axios'
 import Header from './Header'
-
-import Markdown from 'react-markdown'
-import postList from '../posts.json'
 
 import './components.css'
 import Timeline from './Timeline'
 
 function Layout(props) {
+    const url = "http://localhost:1337/events";
+    const [event, setEvent] = useState(null);
     
-    const title = postList[props.match.params.id].title
-    const content = postList[props.match.params.id].content
+    const id = props.match.params.id;
 
     useEffect(() => {
-        document.title = title
-    });
+        axios.get(url)
+        .then(response => {
+            JSON.stringify(response);
+            setEvent(response.data);
+        });
+    }, []);
+    
+    if (event) {
+        return(
+            <div className="layout">
+                <Header page="timeline"/>
+                <div className="container">
+                    <div className="information">
+                        {/* Info Box */}
+                        <ReactMarkdown className="title">{event[id].name}</ReactMarkdown>
+                        <ReactMarkdown className="content">{event[id].content}</ReactMarkdown>
+                    </div>   
+                    <Timeline />
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div></div>
+    )
 
     return(
         <div className="layout">
@@ -23,8 +47,7 @@ function Layout(props) {
             <div className="container">
                 <div className="information">
                     <div className="infoBox">Info</div>
-                    <Markdown className="title">{title}</Markdown>
-                    <Markdown className="content">{content}</Markdown>
+                    
                 </div>   
                 <Timeline />
             </div>

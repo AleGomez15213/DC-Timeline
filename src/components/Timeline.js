@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import axios from "axios";
 import "./timeline.css";
 
 import batmanYearOne from "../images/postImages/batman-yearOne.jpg";
@@ -13,31 +13,21 @@ function Timeline(props) {
       <div className="covercolumn">
         <Cover
           coverImage={batmanYearOne}
-          id="1"
+          id="0"
           alternatve="Batman | Year One Cover"
         />
 
         <Cover
           coverImage={batmanZeroYear}
-          id="2"
+          id="1"
           alternatve="Batman | Zero Year Cover"
         />
 
         <Cover
           coverImage={batmanManWhoLaughs}
-          id="3"
+          id="2"
           alternatve="Batman | The Man Who Laughs Cover"
         />
-
-        <Link to="/timeline/4">
-          <div className="coverContainer">
-            <img
-              src={`${batmanManWhoLaughs}`}
-              className="coverImage"
-              alt="Batman | The Man Who Laughs Cover"
-            />
-          </div>
-        </Link>
       </div>
     </div>
   );
