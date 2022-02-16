@@ -8,8 +8,8 @@ function Cover(props) {
       <Link to={`${props.id}`}>
         <div className="coverContainer">
           <img
-            src={props.coverImage}
             className="coverImage"
+            src={props.coverImage}
             alt={props.alternative}
           />
         </div>

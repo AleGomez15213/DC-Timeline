@@ -31,7 +31,7 @@ function Layout(props) {
                         <ReactMarkdown className="title">{event[id].name}</ReactMarkdown>
                         <ReactMarkdown className="content">{event[id].content}</ReactMarkdown>
                     </div>   
-                    <Timeline />
+                    
                 </div>
             </div>
         );
@@ -40,19 +40,6 @@ function Layout(props) {
     return (
         <div></div>
     )
-
-    return(
-        <div className="layout">
-            <Header page="timeline"/>
-            <div className="container">
-                <div className="information">
-                    <div className="infoBox">Info</div>
-                    
-                </div>   
-                <Timeline />
-            </div>
-       </div>
-    );
 }
 
 export default Layout
