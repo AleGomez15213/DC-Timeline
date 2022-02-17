@@ -39,9 +39,6 @@ export const getStaticProps = async (context) => {
 
 export default function EventDetails({ event, eventList }) {
     return (
-        <Timeline events={eventList}/>
-    );
-    return (
         <div className={styles.container}>
             <div className={styles.content}>
                 <h1 className={styles.title}>{event.name}</h1>
