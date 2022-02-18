@@ -1,26 +1,22 @@
 import Link from 'next/link';
+import styles from '../styles/Home.module.css'
 import Image from 'next/image';
 
 export default function Cover({ info }) {
-    const API_URL = process.env.API_URL;
+    const IMAGES_PATH = process.env.IMAGES_PATH;
     const {name, id, cover} = info;
-    /* Set up .env.local in project folder with this info:
-    
-    API_URL=http://localhost:1337/
-    IMAGES_DOMAIN=localhost
-    
-    */
+
+    //Figure out how to generate link for each cover
     return (
         <div>
-            <div>
-                <a>{name}</a>
-                    <Image // API_URL not working when passed as prop but regular string works fine
-                        src={API_URL + "uploads/batman_year_One_6fc218bc44.jpg"}
-                        alt={name + " cover"}
-                        width={500}
-                        height={500}
+            <div className={styles.cover}>
+                <Image // API_URL not working when passed as prop but regular string works fine
+                    src={IMAGES_PATH + cover.url}
+                    alt={name + " cover"}
+                    layout={"fill"}
                     />
             </div>
+            <p>{name}</p>
         </div>
     );
 }
