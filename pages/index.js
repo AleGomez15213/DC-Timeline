@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useState } from 'react';
 import styles from '../styles/Home.module.css'
 
 export const getStaticProps = async () => {
@@ -11,8 +12,17 @@ export const getStaticProps = async () => {
   }
 } 
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
 export default function Home({ events }) {
   const defaultEvent = events[0].id;
+
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>

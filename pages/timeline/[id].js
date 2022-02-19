@@ -1,5 +1,4 @@
 import styles from '../../styles/Home.module.css'
-import EventCover from '../../components//Cover'
 import Timeline from '../../components/Timeline'
 
 const url = process.env.API_URL;
@@ -18,7 +17,6 @@ export const getStaticPaths = async () => {
     return {
         paths,
         fallback: false,
-        
     }
 }
 
@@ -35,7 +33,7 @@ export const getStaticProps = async (context) => {
     return {
         props: { event: data, eventList: fullData}
     }
-  } 
+} 
 
 export default function EventDetails({ event, eventList }) {
     return (

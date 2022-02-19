@@ -7,14 +7,19 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url("../Images/Background.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
-  min-height: 100vh;
+  min-height: 30vh;
   padding: 0 1.5rem;
   display: flex;
-  justify-content: right;
-  height: 100vh;
+  justify-content: center;
+  height: 90vh;
 }
 
 /* Timeline Page */ 
@@ -27,7 +32,33 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 30%;
+  width: auto;
+  padding: 20px 30px 20px 90px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Scroll Bar */
+.timeline::-webkit-scrollbar {
+  width: 1em;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: rgb(66, 68, 70);
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: rgb(35, 36, 37);
+  border-radius: 100vw;
+}
+
+@supports (scrollbar-color: rgb(35, 36, 37) rgb(66, 68, 70)) {
+  .main {
+    scrollbar-color: rgb(35, 36, 37) rgb(66, 68, 70);
+    scrollbar-width: auto;
+  }
 }
 
 /* Text */
@@ -98,4 +129,14 @@
   margin-top: 5rem;
   width: 15rem;
   height: 20rem;
+}
+
+.rightArrow {
+  border: solid rgb(255, 255, 255);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
