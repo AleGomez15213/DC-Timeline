@@ -1,0 +1,142 @@
+/* General Template */
+.main {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../Images/Background.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  min-height: 30vh;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+}
+
+/* Timeline Page */ 
+.content {
+  width: 70%;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: auto;
+  padding: 20px 30px 20px 90px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Scroll Bar */
+.timeline::-webkit-scrollbar {
+  width: 1em;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: rgb(66, 68, 70);
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: rgb(35, 36, 37);
+  border-radius: 100vw;
+}
+
+@supports (scrollbar-color: rgb(35, 36, 37) rgb(66, 68, 70)) {
+  .main {
+    scrollbar-color: rgb(35, 36, 37) rgb(66, 68, 70);
+    scrollbar-width: auto;
+  }
+}
+
+/* Text */
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title,
+.thin {
+  text-align: center;
+}
+
+.thin {
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 2em;
+  font-weight: 600;
+  background-color: #FFB74A;
+  transition: background-color .5s;
+}
+
+.button:hover {
+  background-color: #fab854;
+}
+
+/* Header and footer */
+.header {
+  display: flex;
+  padding: 0px 25px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header h1 {
+  padding: 0px 25px;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Special */
+.alignEndBox {
+  width: 25%;
+}
+
+.cover {
+  position: relative;
+  margin-top: 5rem;
+  width: 15rem;
+  height: 20rem;
+}
+
+.rightArrow {
+  border: solid rgb(255, 255, 255);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
