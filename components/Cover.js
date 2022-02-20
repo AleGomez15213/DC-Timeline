@@ -3,8 +3,7 @@ import React from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Cover({ info }) {
-    const IMAGES_PATH = process.env.APP_DOMAIN;
-    const {title, slug, image_url, identifier} = info;
+    const {title, identifier} = info;
     return (
         <div>
             <div className={styles.cover}>
@@ -14,7 +13,6 @@ export default function Cover({ info }) {
                     layout={"fill"}
                 />
             </div>
-            <i className="rightArrow"/>
             <p>{title}</p>
         </div>
     );
