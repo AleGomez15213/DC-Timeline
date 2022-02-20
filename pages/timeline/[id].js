@@ -1,50 +1,57 @@
 import styles from '../../styles/Home.module.css'
 import Timeline from '../../components/Timeline'
+import clientPromise from '../../lib/mongodb';
 
-const url = process.env.API_URL;
-
-// maps data to a list of IDs
-export const getStaticPaths = async () => {
-    const res = await fetch(url);
-    const data = await res.json();
-
-    const paths = data.map(event => {
-        return {
-            params: { id: event.id.toString()},
-        }
-    });
-
+export async function getStaticPaths() {
     return {
-        paths,
-        fallback: false,
-    }
+        paths: [],
+        fallback: true
+    };
 }
 
-export const getStaticProps = async (context) => {
-    const id = context.params.id;
-    const res = await fetch(url + '/'+ id);
-    const data = await res.json();
+export async function getStaticProps({ params }) {
+    let data = null;
+    let event = null;
+    const domain = process.env.APP_DOMAIN;
 
-    // gets full repsonse
-    const repsonse = await fetch(url);
-    const fullData = await repsonse.json();
+    // calls full list
+    const client = await clientPromise;
+    const db = client.db("strapi-atlas");
+    const response = await db.collection("events").find({}).toArray();
+    const events = JSON.parse(JSON.stringify(response));
 
-
+    // passes single event
+    try {
+        data = await fetch(`${domain}/api/eventDetails?slug=${params.id}`);
+        event = await data.json();
+    } catch (err) {};
+   
     return {
-        props: { event: data, eventList: fullData}
-    }
-} 
+        props: { event, events },
+        revalidate: 1,
+    };
+}
 
-export default function EventDetails({ event, eventList }) {
-    return (
-        <div className={styles.container}>
-            <div className={styles.content}>
-                <h1 className={styles.title}>{event.name}</h1>
-                <p>{event.content}</p>
+export default function EventDetails({ event, events }) {
+    if (event)
+    {
+        return (
+            <div className={styles.eventPage}>
+                <div className={styles.container}>
+                    <div className={styles.title}><h7>{event.title}</h7></div>
+                    <hr />
+                    {event && (
+                        <>
+                        <div className={styles.content}><p>{event.content}</p></div>
+                        </>
+                    )}
+                </div>
+                <div className={styles.timeline}>
+                        <Timeline events={events}/>
+                </div>
             </div>
-            <div className={styles.timeline}>
-                <Timeline events={eventList}/>
-            </div>
-        </div>
-    );
+        );
+    }
+    else { return <div></div>}
+    
 }

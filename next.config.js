@@ -14,7 +14,7 @@ module.exports = {
   },
 
   images: {
-    domains: [process.env.IMAGES_DOMAIN],
+    domains: [process.env.IMAGES_DOMAIN, 'imgur.com'],
     path: '/_next/image',
     loader: 'default',
   },
