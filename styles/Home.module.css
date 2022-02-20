@@ -14,17 +14,24 @@
   background-size: cover;
 }
 
+.eventPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .container {
-  min-height: 30vh;
+  min-height: 20vh;
   padding: 0 1.5rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 90vh;
+  width: 70%;
 }
 
 /* Timeline Page */ 
-.content {
-  width: 70%;
+.emptySpace {
+  padding: 10vh 0px;
 }
 
 .timeline {
@@ -33,9 +40,9 @@
   align-items: center;
   text-align: center;
   width: auto;
-  padding: 20px 30px 20px 90px;
+  padding: 0px 30px 0px 0px;
   overflow-y: auto;
-  overflow-x: hidden;
+  max-height: 100vh;
 }
 
 /* Scroll Bar */
@@ -65,18 +72,25 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-.title,
+
 .thin {
-  text-align: center;
+  text-align: right;
 }
 
 .thin {
-  line-height: 1.5;
+  line-height: 1;
   font-size: 1.5rem;
   font-weight: 300;
+}
+
+.text {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
 }
 
 .button {
@@ -96,7 +110,6 @@
 .header {
   display: flex;
   padding: 0px 25px;
-  border-bottom: 1px solid #eaeaea;
 }
 
 .header h1 {

@@ -3,20 +3,22 @@ import React from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Cover({ info }) {
-    const IMAGES_PATH = process.env.IMAGES_PATH;
-    const {name, id, cover} = info;
-
+    const {title, identifier} = info;
     return (
         <div>
             <div className={styles.cover}>
                 <Image
-                    src={IMAGES_PATH + cover.url}
-                    alt={name + " cover"}
+                    src={"/../public/Images/" + chooseCover(identifier)}
+                    alt={title + " cover"}
                     layout={"fill"}
                 />
             </div>
-            <i className='rightArrow'/>
-            <p>{name}</p>
+            <p>{title}</p>
         </div>
     );
+}
+
+function chooseCover(id) {
+    const covers = ['batmanYearOne.jpg', 'batmanCourtOfOwls.jpg', 'batmanZeroYear.jpg'];
+    return covers[id];
 }

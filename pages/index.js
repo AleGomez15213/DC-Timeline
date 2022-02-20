@@ -1,31 +1,23 @@
 import Link from 'next/link'
-import { useState } from 'react';
+import clientPromise from '../lib/mongodb'
 import styles from '../styles/Home.module.css'
 
-export const getStaticProps = async () => {
-  const url = process.env.API_URL;
-  const res = await fetch(url);
-  const data = await res.json();
+export async function getServerSideProps(context) {
+  const client = await clientPromise;
+  const db = client.db("strapi-atlas");
+
+  const data = await db.collection("events").find({}).toArray();
+  const events = JSON.parse(JSON.stringify(data));
 
   return {
-      props: { events: data }
-  }
-} 
-
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
+    props: { events },
   };
 }
-
 export default function Home({ events }) {
-  const defaultEvent = events[0].id;
-
+  const defaultEvent = events[0].slug;
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>
+      <h1 className={styles.text}>
           <q>Yes, Father.<br/>I Shall Become A Bat</q>
       </h1>
       <div className={styles.alignEndBox}>
