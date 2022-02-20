@@ -5,6 +5,7 @@ import logo from '../public/logo-white.svg'
 import styles from '../styles/Home.module.css'
 
 export default function Header(props) {
+    let firstRender = false;
     useEffect(() => {
         var textWrapper = document.querySelector(".currentPage");
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -20,8 +21,8 @@ export default function Header(props) {
             duration: 1200,
             delay: (el, i) => 500 + 30 * i
           })
-
-    }, []);
+        firstRender = true;
+    }, [firstRender]);
 
     return(
         <div className={styles.header}>

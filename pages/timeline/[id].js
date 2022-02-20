@@ -28,30 +28,25 @@ export async function getStaticProps({ params }) {
    
     return {
         props: { event, events },
-        revalidate: 1,
+        revalidate: 60,
     };
 }
 
 export default function EventDetails({ event, events }) {
-    if (event)
-    {
-        return (
-            <div className={styles.eventPage}>
-                <div className={styles.container}>
+    return (
+        <div className={styles.eventPage}>
+            <div className={styles.container}>
+                {event && (
+                <>
                     <div className={styles.title}><h7>{event.title}</h7></div>
                     <hr />
-                    {event && (
-                        <>
-                        <div className={styles.content}><p>{event.content}</p></div>
-                        </>
-                    )}
-                </div>
-                <div className={styles.timeline}>
-                        <Timeline events={events}/>
-                </div>
+                    <div className={styles.content}><p>{event.content}</p></div>
+                </>
+                )}
             </div>
-        );
-    }
-    else { return <div></div>}
-    
+            <div className={styles.timeline}>
+                    <Timeline events={events}/>
+            </div>
+        </div>
+    );
 }

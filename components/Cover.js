@@ -11,6 +11,7 @@ export default function Cover({ info }) {
                     src={"/../public/Images/" + chooseCover(identifier)}
                     alt={title + " cover"}
                     layout={"fill"}
+                    priority={true}
                 />
             </div>
             <p>{title}</p>
